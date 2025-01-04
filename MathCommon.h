@@ -1,7 +1,7 @@
 #pragma once
 
 #include "MathFunctions.h"
-#include "Vector2D.h"
+#include "Vector2.h"
 #include "Vector3D.h"
 #include "Vector4D.h"
 #include "Mat2x2.h"
