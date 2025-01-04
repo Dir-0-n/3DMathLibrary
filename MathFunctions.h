@@ -5,59 +5,59 @@
 //PI defines
 #define PI 3.14159265359f 
 
-namespace Oblivion
+namespace Spectra
 {
 	namespace Math
 	{
 		//Trigonometric Functions
-		inline float Sin(float fValue)
+		inline float Sin(const float value)
 		{
-			return (float)sin(fValue);
+			return sinf(value);
 		}
 
-		inline float Cos(float fValue)
+		inline float Cos(const float value)
 		{
-			return (float)cos(fValue);
+			return cosf(value);
 		}
 
-		inline float Tan(float fValue)
+		inline float Tan(const float value)
 		{
-			return (float)tan(fValue);
+			return tanf(value);
 		}
 
-		inline float ASin(float fValue)
+		inline float ASin(const float value)
 		{
-			return (float)asin(fValue);
+			return asinf(value);
 		}
 
-		inline float ACos(float fValue)
+		inline float ACos(const float value)
 		{
-			return (float)acos(fValue);
+			return acosf(value);
 		}
 
-		inline float ATan(float fValue)
+		inline float ATan(const float value)
 		{
-			return (float)atan(fValue);
+			return atanf(value);
 		}
 
-		inline float Max(float fValueA, float fValueB)
+		inline float Max(const float fValueA, const float fValueB)
 		{
 			return (fValueA > fValueB) ? fValueA : fValueB;
 		}
 
-		inline float Min(float fValueA, float fValueB)
+		inline float Min(const float fValueA, const float fValueB)
 		{
 			return (fValueA < fValueB) ? fValueA : fValueB;
 		}
 
-		inline float DegToRad(float fValue)
+		inline float DegToRad(const float value)
 		{
-			return (float)fValue * PI / 180.0f;
+			return static_cast<float>(value) * PI / 180.0f;
 		}
 
-		inline float RadToDeg(float fValue)
+		inline float RadToDeg(const float value)
 		{
-			return (float)fValue * 180.0f / PI;
+			return static_cast<float>(value) * 180.0f / PI;
 		}
 	}
 }

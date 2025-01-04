@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Vector2D.h"
+#include "Vector2.h"
 
-namespace Oblivion {
+namespace Spectra {
 namespace Math {
     class Mat2x2 {
     public:
@@ -10,11 +10,11 @@ namespace Math {
 
         Mat2x2();
         Mat2x2(const float& num1, const float& num2, const float& num3, const float& num4);
-        Mat2x2(const Vector2D& v1, const Vector2D& v2);
+        Mat2x2(const Vector2& v1, const Vector2& v2);
 
         Mat2x2& identityMatrix();
-        Vector2D getColumn(int i) const;
-        Mat2x2& setColumn(int i, Vector2D& column);
+        Vector2 getColumn(int i) const;
+        Mat2x2& setColumn(int i, Vector2& column);
 
         Mat2x2& operator*=(const Mat2x2& n);
         friend Mat2x2 operator*(const float& scalar, const Mat2x2& m1);
@@ -29,12 +29,12 @@ namespace Math {
         return *this;
     }
 
-    inline Vector2D Mat2x2::getColumn(int i) const
+    inline Vector2 Mat2x2::getColumn(int i) const
     {
-        return Vector2D(m[0][i], m[1][i]);
+        return Vector2(m[0][i], m[1][i]);
     }
 
-    inline Mat2x2& Mat2x2::setColumn(int i, Vector2D& column)
+    inline Mat2x2& Mat2x2::setColumn(int i, Vector2& column)
     {
         m[0][i] = column.x;
         m[1][i] = column.y;
@@ -55,7 +55,7 @@ namespace Math {
         m[1][1] = num4;
     }
 
-    inline Mat2x2::Mat2x2(const Vector2D& v1, const Vector2D& v2)
+    inline Mat2x2::Mat2x2(const Vector2& v1, const Vector2& v2)
     {
         m[0][0] = v1.x;
         m[0][1] = v1.y;
@@ -66,12 +66,12 @@ namespace Math {
     inline Mat2x2& Mat2x2::operator*=(const Mat2x2& n)
     {
         //Column 1
-        Vector2D col1(m[0][0], m[1][0]);
+        Vector2 col1(m[0][0], m[1][0]);
         m[0][0] = col1.x * n.m[0][0] + col1.y * n.m[0][1];
         m[1][0] = col1.x * n.m[1][0] + col1.y * n.m[1][1];
 
         //Column 2
-        Vector2D col2(m[0][1], m[1][1]);
+        Vector2 col2(m[0][1], m[1][1]);
         m[0][1] = col2.x * n.m[0][0] + col2.y * n.m[0][1];
         m[1][1] = col2.x * n.m[1][0] + col2.y * n.m[1][1];
 

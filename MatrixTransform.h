@@ -5,7 +5,7 @@
 #include "MathFunctions.h"
 #include "MatrixClipSpace.h"
 
-namespace Oblivion {
+namespace Spectra {
 namespace Math {
     // Scale along cardinal axes
     inline Matrix44 Scale(const Matrix44& m, const Vector3& v)
@@ -93,7 +93,7 @@ namespace Math {
         Matrix44 rotate(1.0f);
 
         switch (axis) {
-            // Rotation about x axis
+            // Rotation about x-axis
         case 1:
             rotate[1][1] = cos;
             rotate[1][2] = sin;
@@ -101,7 +101,7 @@ namespace Math {
             rotate[2][2] = cos;
             break;
 
-            // Rotation about y axis
+            // Rotation about y-axis
         case 2:
             rotate[0][0] = cos;
             rotate[0][2] = -sin;
@@ -109,7 +109,7 @@ namespace Math {
             rotate[2][2] = cos;
             break;
 
-            // Rotation about z axis
+            // Rotation about z-axis
         case 3:
             rotate[0][0] = cos;
             rotate[0][1] = sin;
@@ -163,7 +163,7 @@ namespace Math {
         return reflect * m;
     }
 
-    inline Matrix44 LookAtLH(const Vector3& eye, const Vector3& target, Vector3& tmp)
+    inline Matrix44 LookAtLH(const Vector3& eye, const Vector3& target, const Vector3& tmp)
     {
         Vector3 forward = target - eye;
         Normalize(forward);
@@ -174,19 +174,19 @@ namespace Math {
         Matrix44 viewMat(1.0f);
 
         viewMat[0][0] = right.x;
-        viewMat[0][1] = right.y;
-        viewMat[0][2] = right.z;
-        viewMat[1][0] = up.x;
+        viewMat[0][1] = up.x;
+        viewMat[0][2] = forward.y;
+        viewMat[1][0] = right.y;
         viewMat[1][1] = up.y;
-        viewMat[1][2] = up.z;
-        viewMat[2][0] = forward.x;
-        viewMat[2][1] = forward.y;
+        viewMat[1][2] = forward.y;
+        viewMat[2][0] = right.z;
+        viewMat[2][1] = up.z;
         viewMat[2][2] = forward.z;
         viewMat[3][0] = -DotProduct(right, eye);
         viewMat[3][1] = -DotProduct(up, eye);
-        viewMat[3][2] = DotProduct(forward, eye);
+        viewMat[3][2] = -DotProduct(forward, eye);
 
         return viewMat;
     }
 } // namespace Math
-} // namespace Oblivion
+} // namespace Spectra

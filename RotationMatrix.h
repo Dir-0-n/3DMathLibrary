@@ -3,7 +3,7 @@
 #include "Quaternion.h"
 #include "Mat3x3.h"
 
-namespace Oblivion {
+namespace Spectra {
 namespace Math {
     template <typename T>
     class RotationMatrix {
